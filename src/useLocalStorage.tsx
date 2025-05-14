@@ -5,7 +5,7 @@ type LocalStorageReturnValue = LocalStorageSetValue | null;
 
 type UseLocalStorage = (key: string) => [
   value: LocalStorageReturnValue,
-  {
+  actions: {
     setItem: (newValue: LocalStorageSetValue) => void;
     removeItem: () => void;
   },
