@@ -5,6 +5,7 @@ import './App.css'
 import { DemoFetch } from './demoFetch'
 import { DemoUseLocalStorage } from './demoUseLocalStorage'
 import { DemoHover } from './demoHover'
+import { DemoViewportSize } from './demoViewportSize'
 
 function App() {
 
@@ -24,6 +25,11 @@ function App() {
       <div>
         <h2>Задание #3</h2>
         <DemoHover/>
+      </div>
+      <hr/>
+      <div>
+        <h2>Задание #4</h2>
+        <DemoViewportSize/>
       </div>
     </>
   )
