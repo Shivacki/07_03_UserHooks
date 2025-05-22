@@ -11,41 +11,40 @@ export type RefetchOptions = {
 
 export type RefetchCallback = (opt: RefetchOptions) => Promise<void>;
 
-export type UseFetchRes = {
+export type UseFetchResponse = {
   data: any;
   isLoading: boolean;
   error: string;
   refetch: RefetchCallback;
 }
 
+const DEFAULT_OPTIONS: RefetchOptions = {
+  params: {
+    _limit: 3,
+  }
+};
 
-export const useFetch = (url: string): UseFetchRes => {
+
+export const useFetch = (url: string): UseFetchResponse => {
   const [data, setData] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState('');
   
-  const refetch: RefetchCallback = async (opt: RefetchOptions) => {
+  const refetch: RefetchCallback = async (options: RefetchOptions) => {
     let localError = 'Unknown error';
     
     try {
       setIsLoading(true);
 
-      const response = await fetch(url);
+      const urlParams = !!options.params._limit ? url + `?limit=${options.params._limit}` : url;
+      const response = await fetch(urlParams);
       // console.log('response:', response);
       if (!response.ok) {
         localError = `Bad response. Status: ${response.status}`;
         return;
       }
       
-      let newData = null;
-      const rawData = await response.json();
-      // console.log('rawData:', rawData);
-      if (Array.isArray(rawData) && !!opt.params._limit) {
-        // Ограничиваем кол-во эл-ов рез. массива по заданным опциям
-        newData = rawData.slice(0, opt.params._limit);
-      } else
-        newData = rawData;
-
+      const newData = await response.json();
       localError = '';
       setData(newData);
     } catch(err) {
@@ -63,13 +62,7 @@ export const useFetch = (url: string): UseFetchRes => {
   }
 
   useEffect(()=> {
-    const opt: RefetchOptions = {
-      params: {
-        _limit: 3,
-      }
-    };
-
-    refetch(opt);
+    refetch(DEFAULT_OPTIONS);
   }, [url])
   
 
