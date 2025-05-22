@@ -2,7 +2,7 @@
 // import viteLogo from '/vite.svg'
 import './App.css'
 
-import { DemoFetch } from './demoFetch'
+import { DemoFetch } from './components/demo/demoFetch'
 import { DemoUseLocalStorage } from './demoUseLocalStorage'
 import { DemoHover } from './demoHover'
 import { DemoViewportSize } from './demoViewportSize'
