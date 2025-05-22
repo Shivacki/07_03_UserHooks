@@ -1,4 +1,4 @@
-import { useHover } from './useHover';
+import { useHover } from '../../hooks/useHover';
 
 export function DemoHover() {
   const { hovered, ref } = useHover();

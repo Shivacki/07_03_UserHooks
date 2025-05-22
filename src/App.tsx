@@ -3,9 +3,9 @@
 import './App.css'
 
 import { DemoFetch } from './components/demo/demoFetch'
-import { DemoUseLocalStorage } from './demoUseLocalStorage'
-import { DemoHover } from './demoHover'
-import { DemoViewportSize } from './demoViewportSize'
+import { DemoUseLocalStorage } from './components/demo/demoUseLocalStorage'
+import { DemoHover } from './components/demo/demoHover'
+import { DemoViewportSize } from './components/demo/demoViewportSize'
 
 function App() {
 

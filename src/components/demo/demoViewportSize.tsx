@@ -1,4 +1,4 @@
-import { useViewportSize } from './useViewportSize';
+import { useViewportSize } from '../../hooks/useViewportSize';
 
 export function DemoViewportSize() {
   const { height, width } = useViewportSize();
